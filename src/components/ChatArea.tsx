@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import { Send, Paperclip } from "lucide-react"
+import { Send, Paperclip } from "lucide-react";
+
+import { LabeledToggle } from "@/components/ui/labeled-toggle"
 
 interface ChatAreaProps {
   message: string
@@ -13,7 +15,7 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
   const [translationMode, setTranslationMode] = useState<'literal' | 'natural'>('natural')
   const [speedMode, setSpeedMode] = useState<'accurate' | 'fast'>('accurate')
   const [kanaEnabled, setKanaEnabled] = useState(false)
-
+  const [format, setFormat] = useState("format")
   return (
     <div className="flex-1 h-screen flex flex-col bg-white">
 
@@ -31,30 +33,14 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
 
             {/* Bottom Left Controls */}
             <div className="absolute bottom-3 left-3 flex gap-2 items-center">
-              {/* Translation Mode Toggle */}
-              <div className="flex bg-blue-500 rounded-full p-1">
-                <button
-                  onClick={() => setTranslationMode('literal')}
-                  className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
-                    translationMode === 'literal'
-                      ? 'bg-white text-black shadow-sm'
-                      : 'bg-transparent text-blue-900'
-                  }`}
-                >
-                  直訳
-                </button>
-                <button
-                  onClick={() => setTranslationMode('natural')}
-                  className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
-                    translationMode === 'natural'
-                      ? 'bg-white text-black shadow-sm'
-                      : 'bg-transparent text-blue-900'
-                  }`}
-                >
-                  自然
-                </button>
-              </div>
-
+              <LabeledToggle
+                options={[
+                  { value: "direct", label: "直訳" },
+                  { value: "natural", label: "自然" }
+                ]}
+                value={format}
+                onValueChange={setFormat}
+              />
               {/* Speed Mode Toggle */}
               <div className="flex bg-blue-500 rounded-full p-1">
                 <button
