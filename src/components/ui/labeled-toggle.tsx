@@ -21,7 +21,7 @@ const LabeledToggle = React.forwardRef<HTMLDivElement, LabeledToggleProps>(
       <div
         ref={ref}
         className={cn(
-          "relative inline-flex items-center rounded-[14px] bg-[#0EA5E9] p-1",
+          "relative inline-flex items-center rounded-[14px] bg-blue-500 p-1",
           className
         )}
       >
@@ -38,11 +38,11 @@ const LabeledToggle = React.forwardRef<HTMLDivElement, LabeledToggleProps>(
             type="button"
             onClick={() => onValueChange(option.value)}
             className={cn(
-              "relative z-4 px-3 py-0.5 text-base font-medium transition-colors duration-300",
+              "relative z-4 px-3 py-0.5 text-base font-medium duration-300",
               "rounded-full whitespace-nowrap",
               value === option.value
                 ? "text-black"
-                : "text-[#0284C7] hover:text-[#0369A1]"
+                : "text-[#393967]"
             )}
           >
             {option.label}
