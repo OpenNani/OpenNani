@@ -1,10 +1,14 @@
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Send } from "lucide-react"
 
-export function ChatArea() {
-  const [message, setMessage] = useState("")
+interface ChatAreaProps {
+  message: string
+  setMessage: (message: string) => void
+}
+
+export function ChatArea({ message, setMessage }: ChatAreaProps) {
+  const hasContent = message.trim().length > 0
 
   return (
     <div className="flex-1 h-screen flex flex-col bg-white">
@@ -22,7 +26,11 @@ export function ChatArea() {
             />
             <Button
               size="icon"
-              className="absolute bottom-3 right-3 h-8 w-8 bg-gray-400 hover:bg-gray-500"
+              className={`absolute bottom-3 right-3 h-8 w-8 transition-colors ${
+                hasContent
+                  ? "bg-black hover:bg-gray-800"
+                  : "bg-gray-400 hover:bg-gray-500"
+              }`}
             >
               <Send className="h-4 w-4" />
             </Button>
@@ -30,7 +38,13 @@ export function ChatArea() {
 
           {/* Send Button */}
           <div className="flex justify-end">
-            <Button className="bg-gray-400 hover:bg-gray-500 text-white px-6">
+            <Button
+              className={`text-white px-6 transition-colors ${
+                hasContent
+                  ? "bg-black hover:bg-gray-800"
+                  : "bg-gray-400 hover:bg-gray-500"
+              }`}
+            >
               翻訳する
             </Button>
           </div>

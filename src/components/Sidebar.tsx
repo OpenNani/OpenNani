@@ -1,7 +1,12 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 
-export function Sidebar() {
+interface SidebarProps {
+  onSettingsClick: () => void
+  onChatClick: () => void
+}
+
+export function Sidebar({ onSettingsClick, onChatClick }: SidebarProps) {
   return (
     <div className="w-64 h-screen bg-gray-50 border-r border-gray-200 flex flex-col">
       {/* Header with Avatar and Title */}
@@ -24,6 +29,7 @@ export function Sidebar() {
           <Button
             variant="ghost"
             className="w-full justify-start text-sm text-gray-700 hover:bg-gray-100"
+            onClick={onChatClick}
           >
             <span className="truncate">AI ほんやく</span>
           </Button>
@@ -41,6 +47,7 @@ export function Sidebar() {
         <Button
           variant="default"
           className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+          onClick={onSettingsClick}
         >
           APIキーを追加
         </Button>
