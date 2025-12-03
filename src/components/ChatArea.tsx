@@ -15,7 +15,8 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
   const [translationMode, setTranslationMode] = useState<'literal' | 'natural'>('natural')
   const [speedMode, setSpeedMode] = useState<'accurate' | 'fast'>('accurate')
   const [kanaEnabled, setKanaEnabled] = useState(false)
-  const [format, setFormat] = useState("format")
+  const [format, setFormat] = useState("format");
+  const [quality, setQuality] = useState("quality");
   return (
     <div className="flex-1 h-screen flex flex-col bg-white">
 
@@ -28,7 +29,7 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="すきな言語で入力"
-              className="min-h-[120px] resize-none pr-12 pb-12 text-base"
+              className="min-h-[240px] resize-none pr-2 pb-12 text-base"
             />
 
             {/* Bottom Left Controls */}
@@ -41,30 +42,14 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
                 value={format}
                 onValueChange={setFormat}
               />
-              {/* Speed Mode Toggle */}
-              <div className="flex bg-blue-500 rounded-full p-1">
-                <button
-                  onClick={() => setSpeedMode('accurate')}
-                  className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
-                    speedMode === 'accurate'
-                      ? 'bg-white text-black shadow-sm'
-                      : 'bg-transparent text-blue-900'
-                  }`}
-                >
-                  正確
-                </button>
-                <button
-                  onClick={() => setSpeedMode('fast')}
-                  className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
-                    speedMode === 'fast'
-                      ? 'bg-white text-black shadow-sm'
-                      : 'bg-transparent text-blue-900'
-                  }`}
-                >
-                  高速
-                </button>
-              </div>
-
+              <LabeledToggle
+                options={[
+                  { value: "fast", label: "高速" },
+                  { value: "accurate", label: "正確" }
+                ]}
+                value={quality}
+                onValueChange={setQuality}
+              />
               {/* Kana Button */}
               <button
                 onClick={() => setKanaEnabled(!kanaEnabled)}

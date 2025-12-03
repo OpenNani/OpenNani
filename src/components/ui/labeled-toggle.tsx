@@ -38,7 +38,7 @@ const LabeledToggle = React.forwardRef<HTMLDivElement, LabeledToggleProps>(
             type="button"
             onClick={() => onValueChange(option.value)}
             className={cn(
-              "relative z-4 px-6 py-0.5 text-base font-medium transition-colors duration-300",
+              "relative z-4 px-3 py-0.5 text-base font-medium transition-colors duration-300",
               "rounded-full whitespace-nowrap",
               value === option.value
                 ? "text-black"
