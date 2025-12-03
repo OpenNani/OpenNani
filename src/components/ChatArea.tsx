@@ -32,23 +32,23 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
             {/* Bottom Left Controls */}
             <div className="absolute bottom-3 left-3 flex gap-2 items-center">
               {/* Translation Mode Toggle */}
-              <div className="flex rounded-full overflow-hidden border border-blue-500">
+              <div className="flex bg-blue-500 rounded-full p-1">
                 <button
                   onClick={() => setTranslationMode('literal')}
-                  className={`px-3 py-1 text-xs transition-colors ${
+                  className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
                     translationMode === 'literal'
-                      ? 'bg-white text-black'
-                      : 'bg-blue-500 text-white hover:bg-blue-600'
+                      ? 'bg-white text-black shadow-sm'
+                      : 'bg-transparent text-blue-900'
                   }`}
                 >
                   直訳
                 </button>
                 <button
                   onClick={() => setTranslationMode('natural')}
-                  className={`px-3 py-1 text-xs transition-colors ${
+                  className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
                     translationMode === 'natural'
-                      ? 'bg-white text-black'
-                      : 'bg-blue-500 text-white hover:bg-blue-600'
+                      ? 'bg-white text-black shadow-sm'
+                      : 'bg-transparent text-blue-900'
                   }`}
                 >
                   自然
@@ -56,23 +56,23 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
               </div>
 
               {/* Speed Mode Toggle */}
-              <div className="flex rounded-full overflow-hidden border border-blue-500">
+              <div className="flex bg-blue-500 rounded-full p-1">
                 <button
                   onClick={() => setSpeedMode('accurate')}
-                  className={`px-3 py-1 text-xs transition-colors ${
+                  className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
                     speedMode === 'accurate'
-                      ? 'bg-white text-black'
-                      : 'bg-blue-500 text-white hover:bg-blue-600'
+                      ? 'bg-white text-black shadow-sm'
+                      : 'bg-transparent text-blue-900'
                   }`}
                 >
                   正確
                 </button>
                 <button
                   onClick={() => setSpeedMode('fast')}
-                  className={`px-3 py-1 text-xs transition-colors ${
+                  className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
                     speedMode === 'fast'
-                      ? 'bg-white text-black'
-                      : 'bg-blue-500 text-white hover:bg-blue-600'
+                      ? 'bg-white text-black shadow-sm'
+                      : 'bg-transparent text-blue-900'
                   }`}
                 >
                   高速
@@ -82,10 +82,10 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
               {/* Kana Button */}
               <button
                 onClick={() => setKanaEnabled(!kanaEnabled)}
-                className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
                   kanaEnabled
-                    ? 'bg-white text-black border border-blue-500'
-                    : 'bg-blue-500 text-white hover:bg-blue-600'
+                    ? 'bg-white text-black shadow-sm'
+                    : 'bg-blue-500 text-white'
                 }`}
               >
                 かな
