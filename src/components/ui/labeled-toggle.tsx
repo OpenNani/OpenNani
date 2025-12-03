@@ -21,15 +21,15 @@ const LabeledToggle = React.forwardRef<HTMLDivElement, LabeledToggleProps>(
       <div
         ref={ref}
         className={cn(
-          "relative inline-flex items-center rounded-full bg-[#0EA5E9] p-1.5",
+          "relative inline-flex items-center rounded-[14px] bg-[#0EA5E9] p-1",
           className
         )}
       >
         <div
-          className="absolute top-1.5 bottom-1.5 rounded-full bg-white transition-all duration-300 ease-in-out"
+          className="absolute top-1 bottom-1 rounded-[11px] bg-white transition-all duration-300 ease-in-out"
           style={{
-            left: selectedIndex === 0 ? "6px" : "50%",
-            right: selectedIndex === 0 ? "50%" : "6px",
+            left: selectedIndex === 0 ? "4px" : "50%",
+            right: selectedIndex === 0 ? "50%" : "4px",
           }}
         />
         {options.map((option, index) => (
@@ -38,7 +38,7 @@ const LabeledToggle = React.forwardRef<HTMLDivElement, LabeledToggleProps>(
             type="button"
             onClick={() => onValueChange(option.value)}
             className={cn(
-              "relative z-10 px-8 py-2.5 text-base font-medium transition-colors duration-300",
+              "relative z-4 px-6 py-0.5 text-base font-medium transition-colors duration-300",
               "rounded-full whitespace-nowrap",
               value === option.value
                 ? "text-black"
