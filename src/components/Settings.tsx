@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 export function Settings() {
   const [endpoint, setEndpoint] = useState("")
   const [apiToken, setApiToken] = useState("")
-
+  const [selfRateLimit, setSelfRateLimit] = useState(1500000)
   return (
     <div className="flex-1 h-screen flex flex-col bg-white">
       {/* Main Content Area */}
@@ -38,6 +38,20 @@ export function Settings() {
               value={apiToken}
               onChange={(e) => setApiToken(e.target.value)}
               placeholder="sk-..."
+              className="w-full"
+            />
+          </div>
+
+          {/* 使用量制限 */}
+          <div className="space-y-2">
+            <label className="text-sm text-gray-700">
+              1日あたりのトークンの使用量制限
+            </label>
+            <Input
+              type="number"
+              value={selfRateLimit}
+              onChange={(e) => setSelfRateLimit(e.target.value)}
+              value="1500000"
               className="w-full"
             />
           </div>

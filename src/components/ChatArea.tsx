@@ -24,56 +24,66 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
       <div className="flex-1 flex items-center justify-center p-6">
         <div className="w-full max-w-3xl space-y-4">
           {/* Message Input Area */}
-          <div className="relative">
+          <div className="border rounded-[24px] overflow-hidden">
             <Textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="すきな言語で入力"
-              className="min-h-[240px] resize-none pr-2 pb-12 text-base"
+              className="min-h-[240px] resize-none pr-2 text-base border-0 focus-visible:ring-0"
+              style={{
+                height: 'auto',
+                minHeight: '240px',
+                maxHeight: '600px',
+                overflowY: message.split('\n').length > 15 ? 'auto' : 'hidden'
+              }}
+              rows={Math.max(10, message.split('\n').length)}
             />
 
-            {/* Bottom Left Controls */}
-            <div className="absolute bottom-3 left-3 flex gap-2 items-center">
-              <LabeledToggle
-                options={[
-                  { value: "direct", label: "直訳" },
-                  { value: "natural", label: "自然" }
-                ]}
-                value={format}
-                onValueChange={setFormat}
-              />
-              <LabeledToggle
-                options={[
-                  { value: "fast", label: "高速" },
-                  { value: "accurate", label: "正確" }
-                ]}
-                value={quality}
-                onValueChange={setQuality}
-              />
-              {/* Kana Button */}
-              <button
-                onClick={() => setKanaEnabled(!kanaEnabled)}
-                className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
-                  kanaEnabled
-                    ? 'bg-white text-black shadow-sm'
-                    : 'bg-blue-500 text-white'
+            {/* Bottom Controls Bar */}
+            <div className="flex justify-between items-center px-3 py-3 border-t bg-gray-50">
+              {/* Left Controls */}
+              <div className="flex gap-2 items-center">
+                <LabeledToggle
+                  options={[
+                    { value: "direct", label: "直訳" },
+                    { value: "natural", label: "自然" }
+                  ]}
+                  value={format}
+                  onValueChange={setFormat}
+                />
+                <LabeledToggle
+                  options={[
+                    { value: "fast", label: "高速" },
+                    { value: "accurate", label: "正確" }
+                  ]}
+                  value={quality}
+                  onValueChange={setQuality}
+                />
+                {/* Kana Button */}
+                <button
+                  onClick={() => setKanaEnabled(!kanaEnabled)}
+                  className={`px-4 py-1 text-sm font-medium rounded-full transition-all ${
+                    kanaEnabled
+                      ? 'bg-white text-black shadow-sm'
+                      : 'bg-blue-500 text-white'
+                  }`}
+                >
+                  かな
+                </button>
+              </div>
+
+              {/* Right Send Button */}
+              <Button
+                size="icon"
+                className={`h-8 w-8 transition-colors ${
+                  hasContent
+                    ? "bg-black hover:bg-gray-800"
+                    : "bg-gray-400 hover:bg-gray-500"
                 }`}
               >
-                かな
-              </button>
+                <Send className="h-4 w-4" />
+              </Button>
             </div>
-
-            {/* Bottom Right Send Button */}
-            <Button
-              size="icon"
-              className={`absolute bottom-3 right-3 h-8 w-8 transition-colors ${
-                hasContent
-                  ? "bg-black hover:bg-gray-800"
-                  : "bg-gray-400 hover:bg-gray-500"
-              }`}
-            >
-              <Send className="h-4 w-4" />
-            </Button>
           </div>
 
           {/* Footer Text */}
