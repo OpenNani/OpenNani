@@ -46,7 +46,7 @@ export function Sidebar({ onSettingsClick, onChatClick }: SidebarProps) {
       <div className="p-4 border-t border-gray-200">
         <Button
           variant="default"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-[14px]"
           onClick={onSettingsClick}
         >
           APIキーを追加
