@@ -55,7 +55,7 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
           {currentScreen === 'input' && (
             <div className="animate-fadeIn">
               {/* Message Input Area */}
-              <div className="border rounded-[24px] overflow-hidden">
+              <div className="border border-gray-300 rounded-[24px] overflow-hidden">
                 <Textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -71,7 +71,7 @@ export function ChatArea({ message, setMessage }: ChatAreaProps) {
                 />
 
                 {/* Bottom Controls Bar */}
-                <div className="flex justify-between items-center px-3 py-3 border-t bg-gray-50">
+                <div className="flex justify-between items-center px-3 py-3 border-t border-gray-300 bg-gray-50">
                   {/* Left Controls */}
                   <div className="flex gap-2 items-center">
                     <LabeledToggle
